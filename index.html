@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>KACC · Cybersecurity &amp; Network Engineering</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="_ds/nocturne-39397589-6315-4f84-8843-59dcbfef68a2/styles.css">
+<script src="_ds/nocturne-39397589-6315-4f84-8843-59dcbfef68a2/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&family=Oxanium:wght@500&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@500&family=Exo+2:wght@500&family=Orbitron:wght@500&family=Rajdhani:wght@600&display=swap">
+<style>
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--color-bg); }
+a { color: var(--color-accent-300); }
+a:hover { color: var(--color-accent-200); }
+</style>
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#262a60"></rect><circle cx="50" cy="50" r="6" fill="#9184d9"></circle><circle cx="32" cy="36" r="3" fill="#d2cefd"></circle><circle cx="68" cy="36" r="3" fill="#d2cefd"></circle><circle cx="32" cy="64" r="3" fill="#d2cefd"></circle><circle cx="68" cy="64" r="3" fill="#d2cefd"></circle><path d="M32 36L50 50L68 36M32 64L50 50L68 64" stroke="#9184d9" stroke-width="1.5" fill="none"></path></svg></template>
+<audio ref="{{ audioRef }}" src="assets/focused-digital-flow.mp3" loop="" preload="auto"></audio>
+<div ref="{{ scrollerRef }}" style="--font-tech:{{ techFont }}; position:relative; height:100vh; overflow-y:auto; overflow-x:hidden; scroll-snap-type:{{ snapType }}; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body);">
+
+<sc-if value="{{ isWeb }}" hint-placeholder-val="{{ true }}">
+<nav style="position:fixed; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; gap:clamp(12px,2vw,28px); padding:14px clamp(24px,7vw,148px); background:linear-gradient(to bottom, color-mix(in srgb, var(--color-bg) 92%, transparent), color-mix(in srgb, var(--color-bg) 0%, transparent)); backdrop-filter:blur(6px);">
+  <a href="#intro" style="margin-right:auto; color:var(--color-text); text-decoration:none; font-weight:500; font-size:15px; letter-spacing:-0.01em;">KACC <span style="color:var(--color-neutral-400);">Cyber &amp; Networking</span></a>
+  <div style="display:flex; gap:clamp(10px,1.6vw,24px); flex-wrap:wrap; font-size:13px;">
+    <a href="#demand" style="color:var(--color-neutral-300); text-decoration:none;" style-hover="color:var(--color-accent-300);">Demand</a>
+    <a href="#pathway" style="color:var(--color-neutral-300); text-decoration:none;" style-hover="color:var(--color-accent-300);">Pathway</a>
+    <a href="#classroom" style="color:var(--color-neutral-300); text-decoration:none;" style-hover="color:var(--color-accent-300);">Classroom</a>
+    <a href="#credentials" style="color:var(--color-neutral-300); text-decoration:none;" style-hover="color:var(--color-accent-300);">Credentials</a>
+    <a href="#students" style="color:var(--color-neutral-300); text-decoration:none;" style-hover="color:var(--color-accent-300);">Students</a>
+  </div>
+  <div style="display:flex; align-items:center; gap:8px; padding:2px 10px 2px 2px; border-radius:var(--radius-md); box-shadow:inset 0 0 0 1px var(--color-divider); pointer-events:auto;">
+      <button class="btn btn-ghost btn-icon" onClick="{{ toggleSound }}" title="{{ soundTitle }}" style="width:32px; height:32px; color:var(--color-accent-300);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" fill-opacity="0.15"></path><path d="{{ soundWave }}"></path></svg></button>
+      <input type="range" min="0" max="1" step="0.01" value="{{ volume }}" onChange="{{ setVolume }}" aria-label="Music volume" style="width:clamp(60px,7vw,110px); accent-color:var(--color-accent); cursor:pointer;">
+    </div>
+  <button class="btn btn-primary" onClick="{{ togglePresent }}" title="Present (P)">Present</button>
+</nav>
+</sc-if>
+
+<!-- 01 Intro -->
+<section id="intro" data-chapter="0" data-screen-label="01 Intro" style="position:relative; min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; gap:clamp(24px,4vh,56px); padding:clamp(88px,12vh,150px) clamp(24px,7vw,148px) clamp(64px,10vh,120px); overflow:hidden;">
+  <img data-pan="" src="assets/lab-pano-students.jpg" alt="Students collaborating in the KACC cybersecurity lab" style="position:absolute; top:0; right:0; bottom:0; width:78%; height:100%; object-fit:cover; object-position:62% center; opacity:0.6; -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 45%); mask-image:linear-gradient(to right, transparent 0%, #000 45%);">
+  <canvas data-net="right" style="position:absolute; inset:0; width:100%; height:100%; display:block;"></canvas>
+  <div style="position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 82%, transparent) 34%, color-mix(in srgb, var(--color-bg) 0%, transparent) 72%), linear-gradient(to top, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 0%, transparent) 30%);"></div>
+  <div style="position:relative; display:flex; flex-direction:column; gap:clamp(20px,3.4vh,40px); max-width:min(100%, 1100px);">
+    <div data-reveal="" style="display:flex; align-items:center; gap:14px; font-size:clamp(12px,0.85vw,16px); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-300);"><span style="width:28px; height:1px; background:var(--color-accent);"></span>Kankakee Area Career Center</div>
+    <h1 data-reveal="" data-delay="120" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); margin:0; font-size:clamp(48px,7.4vw,148px); line-height:0.98; letter-spacing:-0.01em; font-weight:500; text-wrap:balance;">Cybersecurity <span style="color:var(--color-accent);">&amp;</span><br>Network Engineering</h1>
+    <p data-reveal="" data-delay="260" style="margin:0; font-size:clamp(20px,2vw,38px); line-height:1.3; color:var(--color-neutral-200); max-width:28ch;">A place to build a future in technology</p>
+    <p data-reveal="" data-delay="380" style="margin:0; font-size:clamp(15px,1.2vw,22px); color:var(--color-neutral-400); letter-spacing:0.01em;">Real equipment. Working code. Hands-on learning.</p>
+  </div>
+  <div data-reveal="" data-delay="600" style="position:relative; display:flex; flex-wrap:wrap; align-items:center; gap:clamp(16px,3vw,48px); font-size:clamp(13px,1vw,18px); color:var(--color-neutral-400);">
+    <span>Timothy Koerner, Program Instructor</span>
+    <sc-if value="{{ isWeb }}" hint-placeholder-val="{{ true }}"><a href="#demand" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none;">Scroll to explore <svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" style="transform:rotate(90deg);"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></a></sc-if>
+    <sc-if value="{{ isPresent }}" hint-placeholder-val="{{ false }}"><span style="color:var(--color-accent-300);">Press → to begin</span></sc-if>
+  </div>
+</section>
+
+<!-- 02 Demand -->
+<section id="demand" data-chapter="1" data-screen-label="02 Demand" style="isolation:isolate; position:relative; min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; gap:clamp(32px,6vh,72px); padding:clamp(88px,12vh,150px) clamp(24px,7vw,148px) clamp(64px,10vh,120px); overflow:hidden; background:radial-gradient(90% 70% at 92% 0%, var(--color-section-glow), color-mix(in srgb, var(--color-section-glow) 0%, transparent) 70%), var(--color-section);">
+  <div style="position:absolute; inset:0; z-index:-1; pointer-events:none;">
+    <canvas data-net="converge" style="position:absolute; inset:0; width:100%; height:100%; display:block; opacity:0.5;"></canvas>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:clamp(14px,2.4vh,28px);">
+    <div data-reveal="" style="display:flex; align-items:center; gap:14px; font-size:clamp(12px,0.85vw,16px); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-200);"><span style="width:28px; height:1px; background:var(--color-accent-300);"></span>The demand</div>
+    <h2 data-reveal="" data-delay="100" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); margin:0; font-size:clamp(34px,4.4vw,84px); line-height:1.04; letter-spacing:-0.01em; font-weight:500; max-width:17ch; text-wrap:balance;">Employers can’t find enough people with these skills.</h2>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap:clamp(28px,4vw,64px) clamp(24px,4vw,72px); max-width:1500px;">
+    <div data-reveal="" data-delay="150" style="display:flex; flex-direction:column; gap:12px;">
+      <div style="height:1px; background:linear-gradient(to right, var(--color-accent-300), color-mix(in srgb, var(--color-accent-300) 0%, transparent));"></div>
+      <div data-count="514359" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); font-size:clamp(44px,5.2vw,104px); line-height:1; letter-spacing:-0.01em; font-weight:500; font-variant-numeric:tabular-nums;">514,359</div>
+      <div style="font-size:clamp(15px,1.15vw,22px); line-height:1.4; color:var(--color-neutral-200); max-width:26ch;">U.S. cybersecurity job listings posted in one year</div>
+      <div style="font-size:clamp(11px,0.75vw,14px); color:var(--color-neutral-300);">CyberSeek, May 2024 – Apr 2025</div>
+    </div>
+    <div data-reveal="" data-delay="300" style="display:flex; flex-direction:column; gap:12px;">
+      <div style="height:1px; background:linear-gradient(to right, var(--color-accent-300), color-mix(in srgb, var(--color-accent-300) 0%, transparent));"></div>
+      <div data-count="19419" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); font-size:clamp(44px,5.2vw,104px); line-height:1; letter-spacing:-0.01em; font-weight:500; font-variant-numeric:tabular-nums;">19,419</div>
+      <div style="font-size:clamp(15px,1.15vw,22px); line-height:1.4; color:var(--color-neutral-200); max-width:26ch;">cybersecurity job openings in Illinois</div>
+      <div style="font-size:clamp(11px,0.75vw,14px); color:var(--color-neutral-300);">CyberSeek</div>
+    </div>
+    <div data-reveal="" data-delay="450" style="display:flex; flex-direction:column; gap:12px;">
+      <div style="height:1px; background:linear-gradient(to right, var(--color-accent-300), color-mix(in srgb, var(--color-accent-300) 0%, transparent));"></div>
+      <div style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); font-size:clamp(44px,5.2vw,104px); line-height:1; letter-spacing:-0.01em; font-weight:500; font-variant-numeric:tabular-nums;"><span data-count="74">74</span><span style="color:var(--color-accent-300); font-size:0.5em; letter-spacing:-0.01em;"> / 100</span></div>
+      <div style="font-size:clamp(15px,1.15vw,22px); line-height:1.4; color:var(--color-neutral-200); max-width:26ch;">qualified workers available for every 100 cybersecurity openings</div>
+      <div style="font-size:clamp(11px,0.75vw,14px); color:var(--color-neutral-300);">CyberSeek supply/demand ratio</div>
+    </div>
+    <div data-reveal="" data-delay="600" style="display:flex; flex-direction:column; gap:12px;">
+      <div style="height:1px; background:linear-gradient(to right, var(--color-accent-300), color-mix(in srgb, var(--color-accent-300) 0%, transparent));"></div>
+      <div style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); font-size:clamp(44px,5.2vw,104px); line-height:1; letter-spacing:-0.01em; font-weight:500; font-variant-numeric:tabular-nums;"><span data-count="21">21</span><span style="color:var(--color-accent-300);">%</span></div>
+      <div style="font-size:clamp(15px,1.15vw,22px); line-height:1.4; color:var(--color-neutral-200); max-width:26ch;">projected job growth for information security analysts, 2025–2035, much faster than average</div>
+      <div style="font-size:clamp(11px,0.75vw,14px); color:var(--color-neutral-300);">U.S. Bureau of Labor Statistics</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 Pay -->
+<section id="pay" data-chapter="2" data-screen-label="03 Where it leads" style="isolation:isolate; position:relative; min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; gap:clamp(32px,6vh,72px); padding:clamp(88px,12vh,150px) clamp(24px,7vw,148px) clamp(64px,10vh,120px); overflow:hidden; background:radial-gradient(70% 60% at 0% 100%, var(--color-accent-900), color-mix(in srgb, var(--color-accent-900) 0%, transparent) 70%), var(--color-bg);">
+  <div style="position:absolute; inset:0; z-index:-1; pointer-events:none;">
+    <canvas data-net="rise" style="position:absolute; inset:0; width:100%; height:100%; display:block; opacity:0.4;"></canvas>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:clamp(14px,2.4vh,28px);">
+    <div data-reveal="" style="display:flex; align-items:center; gap:14px; font-size:clamp(12px,0.85vw,16px); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-300);"><span style="width:28px; height:1px; background:var(--color-accent);"></span>Where it leads</div>
+    <h2 data-reveal="" data-delay="100" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); margin:0; font-size:clamp(34px,4.4vw,84px); line-height:1.04; letter-spacing:-0.01em; font-weight:500; max-width:18ch; text-wrap:balance;">The careers this pathway opens pay well above average.</h2>
+  </div>
+  <div data-reveal="" data-delay="200" style="display:flex; flex-direction:column; gap:clamp(22px,3.4vh,40px); max-width:1240px;">
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; justify-content:space-between; gap:16px; font-size:clamp(15px,1.2vw,23px); color:var(--color-neutral-400);"><span>All U.S. occupations</span><span style="font-variant-numeric:tabular-nums;">$50,980</span></div>
+      <div style="height:clamp(8px,1vw,16px); border-radius:var(--radius-sm); background:var(--color-neutral-900);"><div data-bar="" style="height:100%; width:39.5%; border-radius:var(--radius-sm); background:var(--color-neutral-700);"></div></div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; justify-content:space-between; gap:16px; font-size:clamp(15px,1.2vw,23px); color:var(--color-neutral-200);"><span>Computer network support specialists</span><span style="font-variant-numeric:tabular-nums;">$76,220</span></div>
+      <div style="height:clamp(8px,1vw,16px); border-radius:var(--radius-sm); background:var(--color-neutral-900);"><div data-bar="" style="height:100%; width:59%; border-radius:var(--radius-sm); background:var(--color-accent-700);"></div></div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; justify-content:space-between; gap:16px; font-size:clamp(15px,1.2vw,23px); color:var(--color-neutral-200);"><span>Network and computer systems administrators</span><span style="font-variant-numeric:tabular-nums;">$99,130</span></div>
+      <div style="height:clamp(8px,1vw,16px); border-radius:var(--radius-sm); background:var(--color-neutral-900);"><div data-bar="" style="height:100%; width:76.7%; border-radius:var(--radius-sm); background:var(--color-accent-600);"></div></div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; justify-content:space-between; gap:16px; font-size:clamp(15px,1.2vw,23px); color:var(--color-text);"><span>Information security analysts</span><span style="font-variant-numeric:tabular-nums; color:var(--color-accent-300);">$129,180</span></div>
+      <div style="height:clamp(8px,1vw,16px); border-radius:var(--radius-sm); background:var(--color-neutral-900);"><div data-bar="" style="height:100%; width:100%; border-radius:var(--radius-sm); background:var(--color-accent); box-shadow:0 0 28px color-mix(in srgb, var(--color-accent) 55%, transparent);"></div></div>
+    </div>
+  </div>
+  <p data-reveal="" data-delay="300" style="margin:0; font-size:clamp(12px,0.85vw,16px); line-height:1.5; color:var(--color-neutral-400); max-width:80ch;">Median annual wage, May 2025, U.S. Bureau of Labor Statistics. Medians cover workers at every experience level and are not starting pay. These roles typically follow college or technical training, which certification and dual credit help students begin in high school.</p>
+</section>
+
+<!-- 04 Pathway -->
+<section id="pathway" data-chapter="3" data-screen-label="04 Pathway" style="isolation:isolate; position:relative; min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; gap:clamp(32px,5.5vh,64px); padding:clamp(88px,12vh,150px) clamp(24px,7vw,148px) clamp(64px,10vh,120px); overflow:hidden;">
+  <div style="position:absolute; inset:0; z-index:-1; pointer-events:none;">
+    <canvas data-net="flow" style="position:absolute; inset:0; width:100%; height:100%; display:block; opacity:0.35;"></canvas>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap:clamp(20px,3vw,56px); align-items:end; max-width:1400px;">
+  <div style="display:flex; flex-direction:column; gap:clamp(14px,2.4vh,28px);">
+    <div data-reveal="" style="display:flex; align-items:center; gap:14px; font-size:clamp(12px,0.85vw,16px); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-300);"><span style="width:28px; height:1px; background:var(--color-accent);"></span>The two-year pathway</div>
+    <h2 data-reveal="" data-delay="100" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); margin:0; font-size:clamp(34px,4.4vw,84px); line-height:1.04; letter-spacing:-0.01em; font-weight:500; max-width:18ch; text-wrap:balance;">Two years of connected learning</h2>
+  </div>
+    <figure data-reveal="" data-delay="200" style="margin:0; display:flex; flex-direction:column; gap:10px; min-width:0;">
+      <svg data-topo="%7B%22m1%22%3A%5B71%2C114%5D%2C%22m2%22%3A%5B181%2C114%5D%2C%22a1%22%3A%5B459%2C114%5D%2C%22a2%22%3A%5B569%2C114%5D%2C%22r1%22%3A%5B71%2C286%5D%2C%22r2%22%3A%5B181%2C286%5D%2C%22p1%22%3A%5B459%2C286%5D%2C%22p2%22%3A%5B569%2C286%5D%7D" viewBox="0 0 640 400" role="img" aria-label="Inter-VLAN routing lab: four department VLANs connected through one multilayer switch with access rules" preserveAspectRatio="xMinYMid meet" style="display:block; width:100%; max-width:680px; height:auto; font-family:var(--font-body); overflow:visible;">
+        <line x1="71" y1="114" x2="320" y2="200" style="stroke:var(--color-neutral-700); stroke-width:1.2;"></line><line x1="181" y1="114" x2="320" y2="200" style="stroke:var(--color-neutral-700); stroke-width:1.2;"></line><line x1="459" y1="114" x2="320" y2="200" style="stroke:var(--color-neutral-700); stroke-width:1.2;"></line><line x1="569" y1="114" x2="320" y2="200" style="stroke:var(--color-neutral-700); stroke-width:1.2;"></line><line x1="71" y1="286" x2="320" y2="200" style="stroke:var(--color-neutral-700); stroke-width:1.2;"></line><line x1="181" y1="286" x2="320" y2="200" style="stroke:var(--color-neutral-700); stroke-width:1.2;"></line><line x1="459" y1="286" x2="320" y2="200" style="stroke:var(--color-neutral-700); stroke-width:1.2;"></line><line x1="569" y1="286" x2="320" y2="200" style="stroke:var(--color-neutral-700); stroke-width:1.2;"></line>
+        <rect x="404" y="264" width="220" height="120" rx="10" style="fill:color-mix(in srgb, var(--color-accent-900) 55%, transparent); stroke:var(--color-accent-800); stroke-width:1; stroke-dasharray:4 4;"></rect><text x="418" y="358" style="fill:var(--color-text); font-size:15px; font-weight:500;">VLAN 40 · Production</text><text x="418" y="373" style="fill:var(--color-accent-300); font-size:13px; font-family:ui-monospace, Menlo, monospace;">192.168.40.0/24</text><rect x="16" y="264" width="220" height="120" rx="10" style="fill:color-mix(in srgb, var(--color-accent-900) 55%, transparent); stroke:var(--color-accent-800); stroke-width:1; stroke-dasharray:4 4;"></rect><text x="30" y="358" style="fill:var(--color-text); font-size:15px; font-weight:500;">VLAN 30 · Research</text><text x="30" y="373" style="fill:var(--color-accent-300); font-size:13px; font-family:ui-monospace, Menlo, monospace;">192.168.30.0/24</text><rect x="404" y="16" width="220" height="120" rx="10" style="fill:color-mix(in srgb, var(--color-accent-900) 55%, transparent); stroke:var(--color-accent-800); stroke-width:1; stroke-dasharray:4 4;"></rect><text x="418" y="40" style="fill:var(--color-text); font-size:15px; font-weight:500;">VLAN 20 · Administration</text><text x="418" y="55" style="fill:var(--color-accent-300); font-size:13px; font-family:ui-monospace, Menlo, monospace;">192.168.20.0/24</text><rect x="16" y="16" width="220" height="120" rx="10" style="fill:color-mix(in srgb, var(--color-accent-900) 55%, transparent); stroke:var(--color-accent-800); stroke-width:1; stroke-dasharray:4 4;"></rect><text x="30" y="40" style="fill:var(--color-text); font-size:15px; font-weight:500;">VLAN 10 · Marketing</text><text x="30" y="55" style="fill:var(--color-accent-300); font-size:13px; font-family:ui-monospace, Menlo, monospace;">192.168.10.0/24</text><g><rect x="56" y="89" width="30" height="20" rx="3" style="fill:var(--color-surface); stroke:var(--color-accent-400); stroke-width:1.2;"></rect><line x1="71" y1="109" x2="71" y2="113" style="stroke:var(--color-accent-400); stroke-width:1.2;"></line><text x="71" y="83" text-anchor="middle" style="fill:var(--color-neutral-400); font-size:11.5px; font-family:ui-monospace, Menlo, monospace;">.10</text></g><g><rect x="166" y="89" width="30" height="20" rx="3" style="fill:var(--color-surface); stroke:var(--color-accent-400); stroke-width:1.2;"></rect><line x1="181" y1="109" x2="181" y2="113" style="stroke:var(--color-accent-400); stroke-width:1.2;"></line><text x="181" y="83" text-anchor="middle" style="fill:var(--color-neutral-400); font-size:11.5px; font-family:ui-monospace, Menlo, monospace;">.11</text></g><g><rect x="444" y="89" width="30" height="20" rx="3" style="fill:var(--color-surface); stroke:var(--color-accent-400); stroke-width:1.2;"></rect><line x1="459" y1="109" x2="459" y2="113" style="stroke:var(--color-accent-400); stroke-width:1.2;"></line><text x="459" y="83" text-anchor="middle" style="fill:var(--color-neutral-400); font-size:11.5px; font-family:ui-monospace, Menlo, monospace;">.10</text></g><g><rect x="554" y="89" width="30" height="20" rx="3" style="fill:var(--color-surface); stroke:var(--color-accent-400); stroke-width:1.2;"></rect><line x1="569" y1="109" x2="569" y2="113" style="stroke:var(--color-accent-400); stroke-width:1.2;"></line><text x="569" y="83" text-anchor="middle" style="fill:var(--color-neutral-400); font-size:11.5px; font-family:ui-monospace, Menlo, monospace;">.11</text></g><g><rect x="56" y="289" width="30" height="20" rx="3" style="fill:var(--color-surface); stroke:var(--color-accent-400); stroke-width:1.2;"></rect><line x1="71" y1="309" x2="71" y2="313" style="stroke:var(--color-accent-400); stroke-width:1.2;"></line><text x="71" y="327" text-anchor="middle" style="fill:var(--color-neutral-400); font-size:11.5px; font-family:ui-monospace, Menlo, monospace;">.10</text></g><g><rect x="166" y="289" width="30" height="20" rx="3" style="fill:var(--color-surface); stroke:var(--color-accent-400); stroke-width:1.2;"></rect><line x1="181" y1="309" x2="181" y2="313" style="stroke:var(--color-accent-400); stroke-width:1.2;"></line><text x="181" y="327" text-anchor="middle" style="fill:var(--color-neutral-400); font-size:11.5px; font-family:ui-monospace, Menlo, monospace;">.11</text></g><g><rect x="444" y="289" width="30" height="20" rx="3" style="fill:var(--color-surface); stroke:var(--color-accent-400); stroke-width:1.2;"></rect><line x1="459" y1="309" x2="459" y2="313" style="stroke:var(--color-accent-400); stroke-width:1.2;"></line><text x="459" y="327" text-anchor="middle" style="fill:var(--color-neutral-400); font-size:11.5px; font-family:ui-monospace, Menlo, monospace;">.10</text></g><g><rect x="554" y="289" width="30" height="20" rx="3" style="fill:var(--color-surface); stroke:var(--color-accent-400); stroke-width:1.2;"></rect><line x1="569" y1="309" x2="569" y2="313" style="stroke:var(--color-accent-400); stroke-width:1.2;"></line><text x="569" y="327" text-anchor="middle" style="fill:var(--color-neutral-400); font-size:11.5px; font-family:ui-monospace, Menlo, monospace;">.11</text></g>
+        <g data-packets=""></g>
+        <rect data-core="" x="276" y="178" width="88" height="44" rx="8" style="fill:var(--color-bg); stroke:var(--color-accent); stroke-width:1.5;"></rect>
+        <text x="320" y="197" text-anchor="middle" style="fill:var(--color-text); font-size:14px; font-weight:500;">MLS1</text>
+        <text x="320" y="211" text-anchor="middle" style="fill:var(--color-neutral-400); font-size:10.5px; font-family:ui-monospace, Menlo, monospace;">ACLs on SVIs</text>
+      </svg>
+      <figcaption style="margin:0; display:flex; flex-wrap:wrap; gap:6px 18px; font-size:clamp(11px,0.8vw,14px); color:var(--color-neutral-400);">
+        <span>Inter-VLAN routing lab</span>
+        <span style="display:inline-flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:var(--color-accent-400);"></span>Allowed by policy</span>
+        <span style="display:inline-flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:var(--color-neutral-100);"></span>Blocked at the switch</span>
+      </figcaption>
+    </figure>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:clamp(20px,3vh,36px); max-width:1400px;">
+    <div data-reveal="" data-delay="150" style="position:relative; height:12px;">
+      <div style="position:absolute; left:0; right:0; top:5.5px; height:1px; background:var(--color-neutral-800);"></div>
+      <div data-bar="" style="position:absolute; left:0; top:5px; height:2px; width:100%; background:linear-gradient(to right, var(--color-accent), var(--color-accent-300)); box-shadow:0 0 16px color-mix(in srgb, var(--color-accent) 60%, transparent);"></div>
+      <div style="position:absolute; left:0; top:0; width:12px; height:12px; border-radius:50%; background:var(--color-bg); border:2px solid var(--color-accent);"></div>
+      <div style="position:absolute; left:calc(50% + 12px); top:0; width:12px; height:12px; border-radius:50%; background:var(--color-bg); border:2px solid var(--color-accent-300);"></div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap:clamp(28px,3vw,48px) clamp(24px,3vw,48px);">
+      <div data-reveal="" data-delay="250" style="display:flex; flex-direction:column; gap:clamp(10px,1.6vh,18px);">
+        <div style="font-size:clamp(12px,0.85vw,16px); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-300);">Year 1</div>
+        <h3 style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); margin:0; font-size:clamp(28px,3vw,56px); letter-spacing:-0.02em; font-weight:500;">Cybersecurity</h3>
+        <div style="display:flex;"><span class="tag tag-accent" style="font-size:clamp(12px,0.9vw,16px); padding:5px 12px;">Prepares for CompTIA Security+</span></div>
+        <div style="display:flex; flex-direction:column; gap:8px; font-size:clamp(16px,1.3vw,24px); color:var(--color-neutral-200); line-height:1.4;">
+          <div>Protect accounts and data</div>
+          <div>Investigate threats and vulnerabilities</div>
+          <div>Explain and defend security decisions</div>
+        </div>
+      </div>
+      <div data-reveal="" data-delay="400" style="display:flex; flex-direction:column; gap:clamp(10px,1.6vh,18px);">
+        <div style="font-size:clamp(12px,0.85vw,16px); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-300);">Year 2</div>
+        <h3 style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); margin:0; font-size:clamp(28px,3vw,56px); letter-spacing:-0.02em; font-weight:500;">Network engineering</h3>
+        <div style="display:flex;"><span class="tag tag-accent" style="font-size:clamp(12px,0.9vw,16px); padding:5px 12px;">Prepares for CompTIA Network+</span></div>
+        <div style="display:flex; flex-direction:column; gap:8px; font-size:clamp(16px,1.3vw,24px); color:var(--color-neutral-200); line-height:1.4;">
+          <div>Configure routers and switches</div>
+          <div>Build and troubleshoot networks</div>
+          <div>Connect network design with testing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-reveal="" data-delay="500" style="display:flex; flex-direction:column; gap:clamp(12px,2vh,20px); max-width:1400px;">
+    <div style="height:1px; background:linear-gradient(to right, color-mix(in srgb, var(--color-text) 0%, transparent), var(--color-divider) 48px, var(--color-divider) calc(100% - 48px), color-mix(in srgb, var(--color-text) 0%, transparent));"></div>
+    <div style="font-size:clamp(12px,0.85vw,16px); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-400);">Programming and tools across both years</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap:clamp(16px,2.4vw,40px);">
+      <div style="display:flex; flex-direction:column; gap:6px;"><div style="font-size:clamp(17px,1.4vw,26px); font-weight:500;">Python programming</div><div style="font-size:clamp(14px,1vw,18px); line-height:1.5; color:var(--color-neutral-400);">Students build a foundation in coding and apply it toward network and security automation.</div></div>
+      <div style="display:flex; flex-direction:column; gap:6px;"><div style="font-size:clamp(17px,1.4vw,26px); font-weight:500;">Linux and virtual machines</div><div style="font-size:clamp(14px,1vw,18px); line-height:1.5; color:var(--color-neutral-400);">A working knowledge of Linux, practiced in virtual environments that support experimentation and repeatable labs.</div></div>
+      <div style="display:flex; flex-direction:column; gap:6px;"><div style="font-size:clamp(17px,1.4vw,26px); font-weight:500;">Penetration testing</div><div style="font-size:clamp(14px,1vw,18px); line-height:1.5; color:var(--color-neutral-400);">Authorized instructional labs show how weaknesses are identified and corrected. Technical skills develop alongside professional ethics.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 Classroom -->
+<section id="classroom" data-chapter="4" data-screen-label="05 Classroom" style="isolation:isolate; position:relative; min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; gap:clamp(28px,5vh,60px); padding:clamp(88px,12vh,150px) clamp(24px,7vw,148px) clamp(64px,10vh,120px); overflow:hidden; background:radial-gradient(60% 60% at 100% 50%, var(--color-accent-900), color-mix(in srgb, var(--color-accent-900) 0%, transparent) 70%), var(--color-bg);">
+  <div style="position:absolute; inset:0; z-index:-1; pointer-events:none;">
+    <canvas data-net="grid" style="position:absolute; inset:0; width:100%; height:100%; display:block; opacity:0.35;"></canvas>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:clamp(14px,2.4vh,28px);">
+    <div data-reveal="" style="display:flex; align-items:center; gap:14px; font-size:clamp(12px,0.85vw,16px); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-300);"><span style="width:28px; height:1px; background:var(--color-accent);"></span>The work students practice</div>
+    <h2 data-reveal="" data-delay="100" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); margin:0; font-size:clamp(34px,4.4vw,84px); line-height:1.04; letter-spacing:-0.01em; font-weight:500; max-width:18ch; text-wrap:balance;">A classroom built around real problems</h2>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap:clamp(32px,4vw,72px); align-items:center; max-width:1600px;">
+    <div style="display:flex; flex-direction:column; gap:clamp(18px,2.8vh,32px);">
+      <div data-reveal="" data-delay="150" style="display:grid; grid-template-columns:3.2em minmax(0,1fr); gap:4px 12px; align-items:baseline;"><span style="font-size:clamp(13px,0.95vw,17px); color:var(--color-accent-300); font-variant-numeric:tabular-nums;">01</span><div style="display:flex; flex-direction:column; gap:4px;"><div style="font-size:clamp(20px,1.8vw,34px); font-weight:500; letter-spacing:-0.015em;">Build a network</div><div style="font-size:clamp(14px,1.05vw,19px); color:var(--color-neutral-400); line-height:1.45;">Configure devices and test which systems can communicate.</div></div></div>
+      <div data-reveal="" data-delay="250" style="display:grid; grid-template-columns:3.2em minmax(0,1fr); gap:4px 12px; align-items:baseline;"><span style="font-size:clamp(13px,0.95vw,17px); color:var(--color-accent-300); font-variant-numeric:tabular-nums;">02</span><div style="display:flex; flex-direction:column; gap:4px;"><div style="font-size:clamp(20px,1.8vw,34px); font-weight:500; letter-spacing:-0.015em;">Find the fault</div><div style="font-size:clamp(14px,1.05vw,19px); color:var(--color-neutral-400); line-height:1.45;">Use evidence to diagnose a connection that fails.</div></div></div>
+      <div data-reveal="" data-delay="350" style="display:grid; grid-template-columns:3.2em minmax(0,1fr); gap:4px 12px; align-items:baseline;"><span style="font-size:clamp(13px,0.95vw,17px); color:var(--color-accent-300); font-variant-numeric:tabular-nums;">03</span><div style="display:flex; flex-direction:column; gap:4px;"><div style="font-size:clamp(20px,1.8vw,34px); font-weight:500; letter-spacing:-0.015em;">Test the defenses</div><div style="font-size:clamp(14px,1.05vw,19px); color:var(--color-neutral-400); line-height:1.45;">Explore vulnerabilities in authorized practice environments.</div></div></div>
+      <div data-reveal="" data-delay="450" style="display:grid; grid-template-columns:3.2em minmax(0,1fr); gap:4px 12px; align-items:baseline;"><span style="font-size:clamp(13px,0.95vw,17px); color:var(--color-accent-300); font-variant-numeric:tabular-nums;">04</span><div style="display:flex; flex-direction:column; gap:4px;"><div style="font-size:clamp(20px,1.8vw,34px); font-weight:500; letter-spacing:-0.015em;">Write the solution</div><div style="font-size:clamp(14px,1.05vw,19px); color:var(--color-neutral-400); line-height:1.45;">Develop Python scripts and work in Linux.</div></div></div>
+    </div>
+    <div data-reveal="" data-term="" data-delay="300" style="display:flex; flex-direction:column; border-radius:var(--radius-lg); background:var(--color-surface); box-shadow:var(--shadow-md), 0 0 80px color-mix(in srgb, var(--color-accent) 14%, transparent); overflow:hidden; min-width:0;">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 18px; box-shadow:inset 0 -1px 0 var(--color-neutral-800);">
+        <span style="font-size:clamp(12px,0.85vw,15px); color:var(--color-neutral-300);">Find the fault · example lab</span>
+        <span class="tag tag-neutral">Cisco Packet Tracer</span>
+      </div>
+      <div style="padding:clamp(14px,1.6vw,24px); font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:clamp(12px,0.92vw,17px); line-height:1.65; min-height:calc(15 * 1.65em + 2 * clamp(14px,1.6vw,24px)); overflow-x:auto;">
+        <sc-for list="{{ termLines }}" as="line" hint-placeholder-count="4">
+          <div style="display:flex; gap:0.6em; white-space:pre; padding:0 6px; margin:0 -6px; border-radius:var(--radius-sm); background:{{ line.bg }};"><span style="color:var(--color-accent-400);">{{ line.prompt }}</span><span style="color:{{ line.color }};">{{ line.text }}<span style="color:var(--color-accent);">{{ line.cursor }}</span></span></div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 Lab -->
+<section id="lab" data-chapter="5" data-screen-label="06 Inside the lab" style="position:relative; min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; gap:clamp(24px,4vh,48px); padding:clamp(88px,12vh,150px) clamp(24px,7vw,148px) clamp(64px,10vh,120px); overflow:hidden;">
+  <div style="display:flex; flex-direction:column; gap:clamp(14px,2.4vh,28px);">
+    <div data-reveal="" style="display:flex; align-items:center; gap:14px; font-size:clamp(12px,0.85vw,16px); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-300);"><span style="width:28px; height:1px; background:var(--color-accent);"></span>Inside the lab</div>
+    <h2 data-reveal="" data-delay="100" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); margin:0; font-size:clamp(34px,4.4vw,84px); line-height:1.04; letter-spacing:-0.01em; font-weight:500; max-width:18ch; text-wrap:balance;">Real equipment. Working code.</h2>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:clamp(14px,1.6vw,28px); max-width:1640px;">
+    <figure data-reveal="" data-delay="150" style="margin:0; display:flex; flex-direction:column; gap:12px; min-width:0;">
+      <div style="aspect-ratio:4 / 3; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm);"><img src="assets/lab-tl.jpg" alt="Students at a workstation pointing at a live threat map" style="width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block;"></div>
+      <figcaption style="margin:0; font-size:clamp(14px,1.05vw,19px); color:var(--color-neutral-300);">Reading a live threat map</figcaption>
+    </figure>
+    <figure data-reveal="" data-delay="300" style="margin:0; display:flex; flex-direction:column; gap:12px; min-width:0;">
+      <div style="aspect-ratio:4 / 3; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm);"><img src="assets/lab-collab.jpg" alt="Students cabling switches and planning a network topology together" style="width:100%; height:100%; object-fit:cover; object-position:45% center; display:block;"></div>
+      <figcaption style="margin:0; font-size:clamp(14px,1.05vw,19px); color:var(--color-neutral-300);">Cabling and configuring switches</figcaption>
+    </figure>
+    <figure data-reveal="" data-delay="450" style="margin:0; display:flex; flex-direction:column; gap:12px; min-width:0;">
+      <div style="aspect-ratio:4 / 3; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm);"><img src="assets/lab-tr.jpg" alt="Students writing code at lab workstations" style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;"></div>
+      <figcaption style="margin:0; font-size:clamp(14px,1.05vw,19px); color:var(--color-neutral-300);">Writing and testing code</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 06 Evidence -->
+<section id="evidence" data-chapter="6" data-screen-label="07 Evidence" style="position:relative; min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; gap:clamp(20px,3.6vh,44px); padding:clamp(88px,12vh,150px) clamp(24px,7vw,148px) clamp(64px,10vh,120px); overflow:hidden;">
+  <div style="display:flex; flex-direction:column; gap:clamp(14px,2.4vh,28px);">
+    <div data-reveal="" style="display:flex; align-items:center; gap:14px; font-size:clamp(12px,0.85vw,16px); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-300);"><span style="width:28px; height:1px; background:var(--color-accent);"></span>What students leave with</div>
+    <h2 data-reveal="" data-delay="100" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); margin:0; font-size:clamp(34px,4.4vw,84px); line-height:1.04; letter-spacing:-0.01em; font-weight:500; max-width:16ch; text-wrap:balance;">Skills students can explain and demonstrate</h2>
+  </div>
+  <div data-reveal="" data-delay="150" style="max-width:1600px; height:clamp(200px,34vh,420px); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm);"><img src="assets/lab-present.jpg" alt="Students presenting a segmented network design to the class" style="width:100%; height:100%; object-fit:cover; object-position:center 35%; display:block;"></div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap:clamp(16px,2vw,32px); max-width:1600px;">
+    <div data-reveal="" data-delay="150" class="card elev-sm" style="padding:clamp(18px,1.8vw,32px); gap:12px;"><div class="card-kicker" style="font-size:clamp(11px,0.75vw,14px);">Technical evidence</div><div style="font-size:clamp(17px,1.4vw,26px); line-height:1.35; color:var(--color-neutral-200);">A configured network, a working script, or a documented lab result.</div></div>
+    <div data-reveal="" data-delay="250" class="card elev-sm" style="padding:clamp(18px,1.8vw,32px); gap:12px;"><div class="card-kicker" style="font-size:clamp(11px,0.75vw,14px);">Professional judgment</div><div style="font-size:clamp(17px,1.4vw,26px); line-height:1.35; color:var(--color-neutral-200);">A reason for a security choice and respect for authorization.</div></div>
+    <div data-reveal="" data-delay="350" class="card elev-sm" style="padding:clamp(18px,1.8vw,32px); gap:12px;"><div class="card-kicker" style="font-size:clamp(11px,0.75vw,14px);">Problem-solving habits</div><div style="font-size:clamp(17px,1.4vw,26px); line-height:1.35; color:var(--color-neutral-200);">A tested explanation of what failed and how to correct it.</div></div>
+    <div data-reveal="" data-delay="450" class="card elev-sm" style="padding:clamp(18px,1.8vw,32px); gap:12px;"><div class="card-kicker" style="font-size:clamp(11px,0.75vw,14px);">Communication</div><div style="font-size:clamp(17px,1.4vw,26px); line-height:1.35; color:var(--color-neutral-200);">A clear account of the work, supported by evidence.</div></div>
+  </div>
+</section>
+
+<!-- 07 Credentials -->
+<section id="credentials" data-chapter="7" data-screen-label="08 Credentials" style="isolation:isolate; position:relative; min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; gap:clamp(28px,5vh,60px); padding:clamp(88px,12vh,150px) clamp(24px,7vw,148px) clamp(64px,10vh,120px); overflow:hidden; background:radial-gradient(70% 60% at 100% 0%, var(--color-accent-900), color-mix(in srgb, var(--color-accent-900) 0%, transparent) 70%), var(--color-bg);">
+  <div style="position:absolute; inset:0; z-index:-1; pointer-events:none;">
+    <canvas data-net="tree" style="position:absolute; inset:0; width:100%; height:100%; display:block; opacity:0.4;"></canvas>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:clamp(14px,2.4vh,28px);">
+    <div data-reveal="" style="display:flex; align-items:center; gap:14px; font-size:clamp(12px,0.85vw,16px); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-300);"><span style="width:28px; height:1px; background:var(--color-accent);"></span>Opportunities that fit different goals</div>
+    <h2 data-reveal="" data-delay="100" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); margin:0; font-size:clamp(34px,4.4vw,84px); line-height:1.04; letter-spacing:-0.01em; font-weight:500; max-width:18ch; text-wrap:balance;">Credentials that expand students’ options</h2>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap:clamp(32px,4vw,72px); align-items:start; max-width:1600px;">
+    <div data-reveal="" data-delay="200" style="grid-column:span 2; min-width:0; overflow-x:auto;">
+      <table class="table" style="font-size:clamp(15px,1.2vw,23px);">
+        <thead><tr><th style="padding:0 16px 12px 0; font-size:clamp(11px,0.75vw,14px);">Opportunity</th><th style="padding:0 16px 12px 0; font-size:clamp(11px,0.75vw,14px);">Year 1</th><th style="padding:0 16px 12px 0; font-size:clamp(11px,0.75vw,14px);">Year 2</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:clamp(12px,2vh,22px) 16px clamp(12px,2vh,22px) 0; color:var(--color-neutral-400);">Certification preparation</td><td style="padding:clamp(12px,2vh,22px) 16px clamp(12px,2vh,22px) 0;">CompTIA Security+</td><td style="padding:clamp(12px,2vh,22px) 16px clamp(12px,2vh,22px) 0;">CompTIA Network+</td></tr>
+          <tr><td style="padding:clamp(12px,2vh,22px) 16px clamp(12px,2vh,22px) 0; color:var(--color-neutral-400);">Optional AP pathway</td><td style="padding:clamp(12px,2vh,22px) 16px clamp(12px,2vh,22px) 0;">AP Cybersecurity</td><td style="padding:clamp(12px,2vh,22px) 16px clamp(12px,2vh,22px) 0;">AP Networking*</td></tr>
+          <tr><td style="padding:clamp(12px,2vh,22px) 16px clamp(12px,2vh,22px) 0; color:var(--color-neutral-400);">Dual-credit opportunities</td><td style="padding:clamp(12px,2vh,22px) 16px clamp(12px,2vh,22px) 0;">Kankakee Community College and Prairie State College</td><td style="padding:clamp(12px,2vh,22px) 16px clamp(12px,2vh,22px) 0;">Kankakee Community College and Prairie State College</td></tr>
+        </tbody>
+      </table>
+      <div style="display:flex; flex-direction:column; gap:4px; margin-top:clamp(14px,2vh,24px); font-size:clamp(11px,0.8vw,15px); line-height:1.5; color:var(--color-neutral-400); max-width:80ch;">
+        <div style="color:var(--color-neutral-300);">Students can pursue the opportunities that fit their goals.</div>
+        <div>*AP Networking launches nationally in 2027–28. Exams and credit have separate requirements.</div>
+        <div>College credit depends on eligibility, successful completion, and the awarding institution’s policies.</div>
+      </div>
+    </div>
+    <div data-reveal="" data-delay="350" style="display:flex; flex-direction:column; gap:12px; max-width:30ch;">
+      <div style="height:1px; background:linear-gradient(to right, var(--color-accent), color-mix(in srgb, var(--color-accent) 0%, transparent));"></div>
+      <div data-count="63620" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); font-size:clamp(40px,4.2vw,84px); line-height:1; letter-spacing:-0.01em; font-weight:500; font-variant-numeric:tabular-nums; color:var(--color-accent-300);">63,620</div>
+      <div style="font-size:clamp(15px,1.15vw,22px); line-height:1.4; color:var(--color-neutral-200);">U.S. job listings in one year asked for CompTIA Security+, the certification Year 1 prepares for</div>
+      <div style="font-size:clamp(11px,0.75vw,14px); color:var(--color-neutral-400);">CyberSeek</div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Students -->
+<section id="students" data-chapter="8" data-screen-label="09 Students" style="isolation:isolate; position:relative; min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; gap:clamp(28px,5vh,60px); padding:clamp(88px,12vh,150px) clamp(24px,7vw,148px) clamp(64px,10vh,120px); overflow:hidden;">
+  <div style="position:absolute; inset:0; z-index:-1; pointer-events:none;">
+    <img src="assets/lab-bl.jpg" alt="" style="position:absolute; top:0; right:0; bottom:0; width:62%; height:100%; object-fit:cover; object-position:center; opacity:0.42; -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 55%); mask-image:linear-gradient(to right, transparent 0%, #000 55%);">
+    <canvas data-net="spark" style="position:absolute; inset:0; width:100%; height:100%; display:block; opacity:1;"></canvas>
+    <div style="position:absolute; inset:0; background:linear-gradient(90deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 82%, transparent) 34%, color-mix(in srgb, var(--color-bg) 0%, transparent) 72%), linear-gradient(to top, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 0%, transparent) 30%);"></div>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:clamp(14px,2.4vh,28px);">
+    <div data-reveal="" style="display:flex; align-items:center; gap:14px; font-size:clamp(12px,0.85vw,16px); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-300);"><span style="width:28px; height:1px; background:var(--color-accent);"></span>The students we want to reach</div>
+    <h2 data-reveal="" data-delay="100" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); margin:0; font-size:clamp(34px,4.4vw,84px); line-height:1.04; letter-spacing:-0.01em; font-weight:500; max-width:18ch; text-wrap:balance;">Curiosity is a starting point</h2>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:clamp(10px,1.8vh,22px); max-width:1300px;">
+    <div data-reveal="" data-delay="250" style="font-size:clamp(22px,2.4vw,46px); line-height:1.25; letter-spacing:-0.015em; color:var(--color-neutral-200);">The student who likes figuring out why something works.</div>
+    <div data-reveal="" data-delay="550" style="font-size:clamp(22px,2.4vw,46px); line-height:1.25; letter-spacing:-0.015em; color:var(--color-neutral-200);">The student who enjoys building and solving problems.</div>
+    <div data-reveal="" data-delay="850" style="font-size:clamp(22px,2.4vw,46px); line-height:1.25; letter-spacing:-0.015em; color:var(--color-neutral-200);">The student who is still discovering where they belong.</div>
+  </div>
+  <div data-reveal="" data-delay="1100" style="display:flex; flex-wrap:wrap; gap:clamp(20px,4vw,72px); max-width:1300px;">
+    <div style="display:flex; flex-direction:column; gap:8px; max-width:34ch;">
+      <div style="font-size:clamp(11px,0.8vw,15px); letter-spacing:0.12em; text-transform:uppercase; color:var(--color-accent-300);">No experience required</div>
+      <div style="font-size:clamp(15px,1.15vw,22px); line-height:1.45; color:var(--color-neutral-300);">Students can begin without prior Python, Linux, or network configuration experience.</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; max-width:40ch;">
+      <div style="font-size:clamp(11px,0.8vw,15px); letter-spacing:0.12em; text-transform:uppercase; color:var(--color-accent-300);">For counselors</div>
+      <div style="font-size:clamp(15px,1.15vw,22px); line-height:1.45; color:var(--color-neutral-300);">Consider students whose technical interests are still developing, as well as students who already have a clear career goal.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Close -->
+<section id="next" data-chapter="9" data-screen-label="10 Close" style="isolation:isolate; position:relative; min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; gap:clamp(28px,5vh,60px); padding:clamp(88px,12vh,150px) clamp(24px,7vw,148px) clamp(48px,8vh,96px); overflow:hidden; background:radial-gradient(80% 70% at 85% 100%, var(--color-section-glow), color-mix(in srgb, var(--color-section-glow) 0%, transparent) 70%), var(--color-section);">
+  <div style="position:absolute; inset:0; z-index:-1; pointer-events:none;">
+    <img src="assets/lab-traffic.jpg" alt="" style="position:absolute; top:0; right:0; bottom:0; width:62%; height:100%; object-fit:cover; object-position:center; opacity:0.42; -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 55%); mask-image:linear-gradient(to right, transparent 0%, #000 55%);">
+    <canvas data-net="right" style="position:absolute; inset:0; width:100%; height:100%; display:block; opacity:1;"></canvas>
+    <div style="position:absolute; inset:0; background:linear-gradient(90deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 82%, transparent) 34%, color-mix(in srgb, var(--color-bg) 0%, transparent) 72%), linear-gradient(to top, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 0%, transparent) 30%);"></div>
+  </div>
+  <h2 data-reveal="" style="font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); font-family:var(--font-tech, 'Chakra Petch'), var(--font-heading); margin:0; font-size:clamp(40px,6vw,120px); line-height:1; letter-spacing:-0.01em; font-weight:500; max-width:15ch; text-wrap:balance;">When you see that curiosity, think of our program.</h2>
+  <div data-reveal="" data-delay="200" style="display:flex; flex-direction:column; gap:8px; font-size:clamp(16px,1.3vw,24px); color:var(--color-neutral-200);">
+    <div>Cybersecurity &amp; Network Engineering · Kankakee Area Career Center</div>
+    <div style="color:var(--color-accent-200);">Program instructor: Timothy Koerner</div>
+  </div>
+  <div data-reveal="" data-delay="300" style="display:flex; gap:12px; flex-wrap:wrap;">
+    <a class="btn btn-secondary" href="#intro" style="color:var(--color-text);">Back to start</a>
+  </div>
+  <sc-if value="{{ showSources }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex; flex-direction:column; gap:4px; margin-top:clamp(8px,3vh,40px); font-size:clamp(11px,0.75vw,13px); line-height:1.55; color:var(--color-neutral-300); max-width:110ch;">
+      <div style="letter-spacing:0.12em; text-transform:uppercase; color:var(--color-accent-200); margin-bottom:4px;">Sources</div>
+      <div><a href="https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics, Occupational Outlook Handbook</a>: Information Security Analysts; Computer Support Specialists; Network and Computer Systems Administrators. Median wages May 2025; projections 2025–2035.</div>
+      <div><a href="https://www.cyberseek.org" target="_blank" rel="noopener">CyberSeek</a> (CompTIA, Lightcast, NIST NICE): U.S. job listings May 2024 – Apr 2025, supply/demand ratio, Illinois openings, Security+ listings.</div>
+    </div>
+  </sc-if>
+</section>
+
+<sc-if value="{{ isPresent }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; left:clamp(24px,7vw,148px); right:clamp(16px,3vw,48px); bottom:clamp(14px,2.4vh,28px); z-index:20; display:flex; align-items:center; gap:16px; pointer-events:none;">
+    <div style="display:flex; align-items:center; gap:6px; pointer-events:auto;">
+      <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="10">
+        <button onClick="{{ dot.go }}" title="{{ dot.label }}" style="width:{{ dot.w }}; height:8px; padding:0; border:0; border-radius:4px; background:{{ dot.bg }}; cursor:pointer; transition:width .3s, background .3s;"></button>
+      </sc-for>
+    </div>
+    <div style="font-size:13px; color:var(--color-neutral-400); font-variant-numeric:tabular-nums; margin-right:auto;">{{ counter }} / {{ total }} · {{ activeLabel }}</div>
+    <div style="display:flex; align-items:center; gap:8px; padding:2px 10px 2px 2px; border-radius:var(--radius-md); box-shadow:inset 0 0 0 1px var(--color-divider); pointer-events:auto;">
+      <button class="btn btn-ghost btn-icon" onClick="{{ toggleSound }}" title="{{ soundTitle }}" style="width:32px; height:32px; color:var(--color-accent-300);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" fill-opacity="0.15"></path><path d="{{ soundWave }}"></path></svg></button>
+      <input type="range" min="0" max="1" step="0.01" value="{{ volume }}" onChange="{{ setVolume }}" aria-label="Music volume" style="width:clamp(60px,7vw,110px); accent-color:var(--color-accent); cursor:pointer;">
+    </div>
+    <div style="display:flex; gap:6px; pointer-events:auto;">
+      <button class="btn btn-secondary btn-icon" onClick="{{ prev }}" title="Previous (←)"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" style="transform:scaleX(-1);"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></button>
+      <button class="btn btn-secondary btn-icon" onClick="{{ next }}" title="Next (→)"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></button>
+      <button class="btn btn-secondary" onClick="{{ exitPresent }}" title="Exit (Esc)" style="font-size:13px;">Exit</button>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;headingFont&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Chakra Petch&quot;,&quot;Oxanium&quot;,&quot;Space Grotesk&quot;,&quot;JetBrains Mono&quot;,&quot;Exo 2&quot;,&quot;Orbitron&quot;,&quot;Rajdhani&quot;],&quot;default&quot;:&quot;Chakra Petch&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;defaultMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;web&quot;,&quot;present&quot;],&quot;default&quot;:&quot;web&quot;,&quot;tsType&quot;:&quot;'web' | 'present'&quot;},&quot;musicOnPresent&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showSources&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const CH = ['Introduction','The demand','Where it leads','The pathway','The classroom','Inside the lab','What students leave with','Credentials','The students','Next steps'];
+const TERM = [
+  { p: 'PC1>', cmd: 'ping 10.0.20.15' },
+  { o: 'Request timed out.' },
+  { o: 'Request timed out.' },
+  { p: 'PC1>', cmd: 'tracert 10.0.20.15' },
+  { o: '  1   1 ms   10.0.10.1' },
+  { o: '  2   *      Request timed out.' },
+  { p: 'R2#', cmd: 'show ip interface brief' },
+  { o: 'Gi0/0  10.0.10.2  up                     up' },
+  { o: 'Gi0/1  10.0.20.1  administratively down  down', hl: true },
+  { p: 'R2(config)#', cmd: 'interface gi0/1' },
+  { p: 'R2(config-if)#', cmd: 'no shutdown' },
+  { o: '%LINK-5-CHANGED: Interface Gi0/1, changed state to up', ok: true },
+  { p: 'PC1>', cmd: 'ping 10.0.20.15' },
+  { o: 'Reply from 10.0.20.15: bytes=32 time=2ms TTL=126', ok: true },
+];
+
+class Component extends DCLogic {
+  state = { mode: 'web', active: 0, tl: 0, tc: 0, sound: false, volume: 0.4 };
+  audio = React.createRef();
+
+  fadeTo(target, ms) {
+    const a = this.audio.current; if (!a) return;
+    cancelAnimationFrame(this.fadeRaf);
+    const from = a.volume, t0 = performance.now();
+    const step = (t) => { const k = Math.min(1, (t - t0) / ms); a.volume = from + (target - from) * k; if (k < 1) this.fadeRaf = requestAnimationFrame(step); else if (target === 0) a.pause(); };
+    this.fadeRaf = requestAnimationFrame(step);
+  }
+
+  setSound(on) {
+    const a = this.audio.current; if (!a) return;
+    if (on) { a.volume = 0; const p = a.play(); if (p && p.catch) p.catch(() => this.setState({ sound: false })); this.fadeTo(this.state.volume, 1800); }
+    else this.fadeTo(0, 600);
+    this.setState({ sound: on });
+  }
+  scroller = React.createRef();
+  canvas = React.createRef();
+
+  componentDidMount() {
+    this.reduce = this.props.motion === false || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.props.defaultMode === 'present') this.setState({ mode: 'present' });
+    if (this.reduce) this.setState({ tl: TERM.length });
+    this.setupObservers();
+    this.startNets();
+    this.startPan();
+    this.startTopo();
+    this.onKey = (e) => this.handleKey(e);
+    window.addEventListener('keydown', this.onKey);
+    this.onFs = () => {
+      if (!document.fullscreenElement && this.wasFs) { this.wasFs = false; if (this.state.mode === 'present') this.setState({ mode: 'web' }); }
+    };
+    document.addEventListener('fullscreenchange', this.onFs);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.onKey);
+    document.removeEventListener('fullscreenchange', this.onFs);
+    [this.revealObs, this.chapObs, this.netObs, this.ro].forEach(o => o && o.disconnect());
+    cancelAnimationFrame(this.raf);
+    cancelAnimationFrame(this.panRaf);
+    cancelAnimationFrame(this.topoRaf);
+    cancelAnimationFrame(this.fadeRaf);
+    if (this.audio.current) this.audio.current.pause();
+    clearTimeout(this.tt);
+  }
+
+  setupObservers() {
+    const root = this.scroller.current;
+    if (!root) return;
+    const reveals = root.querySelectorAll('[data-reveal]');
+    const bars = root.querySelectorAll('[data-bar]');
+    if (!this.reduce) {
+      const ease = 'cubic-bezier(.2,.7,.2,1)';
+      reveals.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(24px)'; el.style.transition = `opacity .9s ${ease}, transform .9s ${ease}`; });
+      bars.forEach(el => { el.dataset.w = el.style.width; el.style.width = '0%'; el.style.transition = `width 1.5s ${ease}`; });
+    }
+    this.revealObs = new IntersectionObserver(entries => entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target;
+      this.revealObs.unobserve(el);
+      setTimeout(() => this.reveal(el), +(el.dataset.delay || 0));
+    }), { root, threshold: 0.15 });
+    reveals.forEach(el => this.revealObs.observe(el));
+    this.chapObs = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { const i = +en.target.dataset.chapter; if (i !== this.state.active) this.setState({ active: i }); }
+    }), { root, rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    root.querySelectorAll('[data-chapter]').forEach(el => this.chapObs.observe(el));
+  }
+
+  reveal(el) {
+    const within = sel => [...(el.matches(sel) ? [el] : []), ...el.querySelectorAll(sel)];
+    if (!this.reduce) { el.style.opacity = '1'; el.style.transform = 'none'; }
+    within('[data-bar]').forEach(b => { if (b.dataset.w) b.style.width = b.dataset.w; });
+    within('[data-count]').forEach(n => this.count(n));
+    if (el.hasAttribute('data-term')) this.startTerm();
+  }
+
+  count(n) {
+    if (this.reduce) return;
+    const target = +n.dataset.count, start = performance.now(), dur = 1700;
+    const tick = (t) => {
+      const k = Math.min(1, (t - start) / dur), e = 1 - Math.pow(1 - k, 3);
+      n.textContent = Math.round(target * e).toLocaleString('en-US');
+      if (k < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  startTerm() {
+    if (this.termStarted || this.reduce) return;
+    this.termStarted = true;
+    this.stepTerm();
+  }
+
+  stepTerm() {
+    const { tl, tc } = this.state;
+    if (tl >= TERM.length) { this.tt = setTimeout(() => this.setState({ tl: 0, tc: 0 }, () => this.stepTerm()), 6000); return; }
+    const L = TERM[tl];
+    if (L.cmd != null && tc < L.cmd.length) { this.tt = setTimeout(() => this.setState({ tc: tc + 1 }, () => this.stepTerm()), tc === 0 ? 500 : 35 + Math.random() * 45); return; }
+    this.tt = setTimeout(() => this.setState({ tl: tl + 1, tc: 0 }, () => this.stepTerm()), L.cmd != null ? 420 : 240);
+  }
+
+  chapterEls() { return this.scroller.current ? [...this.scroller.current.querySelectorAll('[data-chapter]')] : []; }
+
+  goTo(i) {
+    const secs = this.chapterEls();
+    if (!secs.length) return;
+    i = Math.max(0, Math.min(secs.length - 1, i));
+    this.scroller.current.scrollTo({ top: secs[i].offsetTop, behavior: this.reduce ? 'auto' : 'smooth' });
+    this.setState({ active: i });
+  }
+
+  togglePresent(force) {
+    const next = force !== undefined ? force : this.state.mode !== 'present';
+    this.setState({ mode: next ? 'present' : 'web' }, () => this.goTo(this.state.active));
+    if (next && !this.state.sound && !this.soundTouched && this.props.musicOnPresent !== false) this.setSound(true);
+    const de = document.documentElement;
+    if (next && de.requestFullscreen && !document.fullscreenElement) {
+      de.requestFullscreen().then(() => { this.wasFs = true; }).catch(() => {});
+    } else if (!next && document.fullscreenElement) {
+      this.wasFs = false;
+      document.exitFullscreen().catch(() => {});
+    }
+  }
+
+  handleKey(e) {
+    const t = e.target, tag = (t.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || t.isContentEditable || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === 'p' || e.key === 'P') { e.preventDefault(); this.togglePresent(); return; }
+    if (e.key === 'm' || e.key === 'M') { e.preventDefault(); this.soundTouched = true; this.setSound(!this.state.sound); return; }
+    if (this.state.mode !== 'present') return;
+    const a = this.state.active;
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); this.goTo(a + 1); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.goTo(a - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); this.goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); this.goTo(CH.length - 1); }
+    else if (e.key === 'Escape') { this.togglePresent(false); }
+  }
+
+  startTopo() {
+    const svg = this.scroller.current && this.scroller.current.querySelector('svg[data-topo]');
+    if (!svg || this.reduce) return;
+    const pcs = JSON.parse(decodeURIComponent(svg.getAttribute('data-topo')));
+    const layer = svg.querySelector('g[data-packets]'), core = svg.querySelector('rect[data-core]');
+    const NS = 'http://www.w3.org/2000/svg', C = [320, 200];
+    const ids = Object.keys(pcs), dept = id => id[0];
+    const blocked = (a, b) => (dept(a) === 'm' && 'rp'.includes(dept(b))) || (dept(b) === 'm' && 'rp'.includes(dept(a)));
+    const mk = (tag, attrs, style) => { const e = document.createElementNS(NS, tag); Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v)); e.setAttribute('style', style); layer.appendChild(e); return e; };
+    const ring = (x, y, color) => { const r = mk('circle', { cx: x, cy: y, r: 4 }, 'fill:none; stroke:' + color + '; stroke-width:1.5;'); rings.push({ e: r, life: 1 }); };
+    let packets = [], rings = [], spawnT = 0, last = 0, flash = 0;
+    const tick = (t) => {
+      const dt = last ? Math.min(50, t - last) : 0; last = t;
+      const r = svg.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < window.innerHeight) {
+        spawnT += dt;
+        if (spawnT > 650) {
+          spawnT = 0;
+          let a = ids[Math.floor(Math.random() * ids.length)], b;
+          do { b = ids[Math.floor(Math.random() * ids.length)]; } while (b === a);
+          if (Math.random() < 0.3) { a = 'm' + (1 + Math.floor(Math.random() * 2)); b = 'rp'[Math.floor(Math.random() * 2)] + (1 + Math.floor(Math.random() * 2)); }
+          const bad = blocked(a, b);
+          const e = mk('circle', { r: 3.4 }, 'fill:var(' + (bad ? '--color-neutral-100' : '--color-accent-400') + '); filter:drop-shadow(0 0 4px var(' + (bad ? '--color-neutral-100' : '--color-accent-400') + '));');
+          packets.push({ e, pts: bad ? [pcs[a], C] : [pcs[a], C, pcs[b]], seg: 0, k: 0, bad });
+        }
+        packets = packets.filter(p => {
+          p.k += dt * 0.0016;
+          if (p.k >= 1) { p.seg++; p.k = 0; }
+          if (p.seg >= p.pts.length - 1) {
+            const end = p.pts[p.pts.length - 1];
+            if (p.bad) { ring(C[0], C[1], 'var(--color-neutral-100)'); flash = 1; } else ring(end[0], end[1], 'var(--color-accent-300)');
+            p.e.remove(); return false;
+          }
+          const A = p.pts[p.seg], B = p.pts[p.seg + 1], e = 1 - Math.pow(1 - p.k, 2);
+          p.e.setAttribute('cx', A[0] + (B[0] - A[0]) * e); p.e.setAttribute('cy', A[1] + (B[1] - A[1]) * e);
+          return true;
+        });
+        rings = rings.filter(o => {
+          o.life -= dt * 0.0018;
+          if (o.life <= 0) { o.e.remove(); return false; }
+          o.e.setAttribute('r', 4 + (1 - o.life) * 22); o.e.style.opacity = o.life;
+          return true;
+        });
+        flash = Math.max(0, flash - dt * 0.002);
+        core.style.stroke = flash > 0.05 ? 'var(--color-neutral-100)' : 'var(--color-accent)';
+      }
+      this.topoRaf = requestAnimationFrame(tick);
+    };
+    this.topoRaf = requestAnimationFrame(tick);
+  }
+
+  startPan() {
+    const img = this.scroller.current && this.scroller.current.querySelector('img[data-pan]');
+    if (!img || this.reduce) return;
+    const period = 70000;
+    let t0 = null, acc = 0, last = 0;
+    const tick = (t) => {
+      const dt = last ? Math.min(50, t - last) : 0; last = t;
+      if (this.scroller.current.scrollTop < window.innerHeight) acc += dt;
+      const x = 50 - 50 * Math.cos(acc / period * Math.PI * 2);
+      img.style.objectPosition = x.toFixed(2) + '% center';
+      this.panRaf = requestAnimationFrame(tick);
+    };
+    this.panRaf = requestAnimationFrame(tick);
+  }
+
+  startNets() {
+    const root = this.scroller.current;
+    if (!root) return;
+    const css = getComputedStyle(document.documentElement);
+    const col = (n, f) => css.getPropertyValue(n).trim() || f;
+    const rgba = (hex, a) => { const v = parseInt(hex.replace('#', ''), 16); return `rgba(${v >> 16 & 255},${v >> 8 & 255},${v & 255},${a})`; };
+    const A = col('--color-accent', '#9184d9'), A3 = col('--color-accent-300', '#d2cefd'), A4 = col('--color-accent-400', '#b5abfc');
+    const N4 = col('--color-neutral-400', '#b2b6ca'), N6 = col('--color-neutral-600', '#75798c'), N1 = col('--color-neutral-100', '#f3f5fe');
+    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+    const R = (lo, hi) => lo + Math.random() * (hi - lo);
+    const DYN = { right: 1, wide: 1, spark: 1 };
+    const SPAWN = { right: 160, wide: 160, converge: 55, rise: 120, flow: 140, grid: 150, tree: 200, spark: 260 };
+    const nets = [...root.querySelectorAll('canvas[data-net]')].map(c => ({ c, ctx: c.getContext('2d'), v: c.dataset.net, W: 0, H: 0, nodes: [], edges: [], adj: [], packets: [], rings: [], spawnT: 0, visible: false, fail: null, failT: 0, flash: null }));
+    const D = n => Math.max(140, Math.min(230, n.W / 8));
+    const neighbors = (n, i) => {
+      if (DYN[n.v]) { const a = n.nodes[i], d = D(n), out = []; n.nodes.forEach((b, j) => { if (j !== i && Math.hypot(a.x - b.x, a.y - b.y) < d) out.push(j); }); return out; }
+      const f = n.fail ? n.edges[n.fail.e] : null;
+      return (n.adj[i] || []).filter(j => !(f && ((f[0] === i && f[1] === j) || (f[1] === i && f[0] === j))));
+    };
+    const ring = (n, x, y, c, big) => n.rings.push({ x, y, r: 3, life: 1, c: c || A3, g: big ? 0.06 : 0.03 });
+    const build = (n) => {
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      n.W = n.c.clientWidth; n.H = n.c.clientHeight;
+      const W = n.W, H = n.H;
+      if (!W || !H) return;
+      n.c.width = W * dpr; n.c.height = H * dpr; n.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const nodes = [], edges = [], base = Math.max(24, Math.min(80, Math.round(W * H / 22000)));
+      const node = (x, y, hub) => { nodes.push({ x, y, vx: (Math.random() - 0.5) * 0.12, vy: (Math.random() - 0.5) * 0.12, hub: !!hub, glow: 0 }); return nodes.length - 1; };
+      if (n.v === 'right' || n.v === 'wide') {
+        for (let i = 0; i < base; i++) { const biased = n.v === 'right' && Math.random() < 0.82; node(biased ? W * R(0.36, 0.98) : W * Math.random(), H * R(0.05, 0.95), Math.random() < 0.13); }
+      } else if (n.v === 'spark') {
+        for (let i = 0; i < Math.round(base * 0.7); i++) node(Math.random() < 0.8 ? W * R(0.4, 0.98) : W * Math.random(), H * R(0.05, 0.95), false);
+      } else if (n.v === 'converge') {
+        const hubs = []; for (let i = 0; i < 5; i++) hubs.push(node(W * R(0.5, 0.93), H * R(0.15, 0.85), true));
+        for (let i = 0; i < hubs.length; i++) edges.push([hubs[i], hubs[(i + 1) % hubs.length]]);
+        for (let i = 0; i < Math.round(base * 1.1); i++) {
+          const l = node(W * R(0.02, 1), H * R(0.03, 0.97));
+          let best = hubs[0], bd = 1e9; hubs.forEach(h => { const d = Math.hypot(nodes[h].x - nodes[l].x, nodes[h].y - nodes[l].y); if (d < bd) { bd = d; best = h; } });
+          edges.push([l, best]);
+        }
+      } else if (n.v === 'rise') {
+        const cols = Math.max(6, Math.min(12, Math.round(W / 150))), step = Math.max(46, H / 14), colIdx = [];
+        for (let c = 0; c < cols; c++) {
+          const x = W * (0.42 + 0.54 * c / (cols - 1)), top = H * (0.7 - 0.58 * c / (cols - 1)), ids = [];
+          for (let y = H * 0.96; y >= top; y -= step) ids.push(node(x, y, false));
+          nodes[ids[ids.length - 1]].hub = true;
+          for (let i = 1; i < ids.length; i++) edges.push([ids[i - 1], ids[i]]);
+          colIdx.push(ids);
+        }
+        for (let c = 1; c < cols; c++) colIdx[c - 1].forEach((id, r) => { if (colIdx[c][r + 1] != null && Math.random() < 0.35) edges.push([id, colIdx[c][r + 1]]); });
+      } else if (n.v === 'flow') {
+        const cl = [[0.5, 0.42, 0.1, 0.3], [0.82, 0.55, 0.12, 0.32]], groups = [];
+        cl.forEach(([cx, cy, rx, ry]) => { const g = []; for (let i = 0; i < Math.round(base * 0.4); i++) { const t = Math.random() * 6.283, r = Math.sqrt(Math.random()); g.push(node(W * (cx + Math.cos(t) * rx * r), H * (cy + Math.sin(t) * ry * r), Math.random() < 0.12)); } groups.push(g); });
+        const d = Math.max(90, W * 0.075);
+        groups.forEach(g => g.forEach((i, a) => g.slice(a + 1).forEach(j => { if (Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y) < d) edges.push([i, j]); })));
+        const pairs = []; groups[0].forEach(i => groups[1].forEach(j => pairs.push([i, j, Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y)])));
+        pairs.sort((p, q) => p[2] - q[2]).slice(0, 4).forEach(p => edges.push([p[0], p[1]]));
+        n.entries = groups[0].slice().sort((i, j) => nodes[i].x - nodes[j].x).slice(0, 6);
+      } else if (n.v === 'grid') {
+        const step = Math.max(80, Math.min(130, W / 15)), cols = Math.floor(W * 0.62 / step), rows = Math.floor(H * 0.86 / step);
+        const x0 = W - cols * step, y0 = (H - (rows - 1) * step) / 2, id = [];
+        for (let r = 0; r < rows; r++) { id[r] = []; for (let c = 0; c < cols; c++) id[r][c] = node(x0 + c * step, y0 + r * step, Math.random() < 0.15); }
+        for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { if (c + 1 < cols) edges.push([id[r][c], id[r][c + 1]]); if (r + 1 < rows) edges.push([id[r][c], id[r + 1][c]]); }
+      } else if (n.v === 'tree') {
+        const levels = 5, tree = [{ l: 0, kids: [] }];
+        const grow = (i) => { const t = tree[i]; if (t.l >= levels - 1) return; const k = t.l === 0 ? 3 : 2 + (Math.random() < 0.35 ? 1 : 0); for (let c = 0; c < k; c++) { tree.push({ l: t.l + 1, kids: [], p: i }); t.kids.push(tree.length - 1); grow(tree.length - 1); } };
+        grow(0);
+        let leaf = 0; const leaves = tree.filter(t => !t.kids.length).length;
+        const place = (i) => { const t = tree[i]; if (!t.kids.length) { t.x = 0.4 + 0.58 * (leaf++ + 0.5) / leaves; } else { t.kids.forEach(place); t.x = t.kids.reduce((s, k) => s + tree[k].x, 0) / t.kids.length; } };
+        place(0);
+        tree.forEach((t, i) => { t.id = node(W * t.x, H * (0.1 + 0.8 * t.l / (levels - 1)), t.l < 2); });
+        tree.forEach(t => { if (t.p != null) edges.push([tree[t.p].id, t.id]); });
+      }
+      n.nodes = nodes; n.edges = edges; n.adj = nodes.map(() => []);
+      edges.forEach(([i, j]) => { n.adj[i].push(j); n.adj[j].push(i); });
+      n.packets = []; n.rings = []; n.fail = null; n.failT = 0;
+      if (this.reduce) draw(n, 0);
+    };
+    const spawn = (n) => {
+      const N = n.nodes, v = n.v;
+      const go = (a, b, extra) => n.packets.push(Object.assign({ a, b, t: 0, s: 0.0007 + Math.random() * 0.0008, hops: Infinity, threat: false }, extra || {}));
+      if (v === 'right' || v === 'wide') { const i = Math.floor(Math.random() * N.length), nb = neighbors(n, i); if (nb.length) { const threat = Math.random() < 0.12; go(i, pick(nb), { threat, hops: threat ? 0 : 1 + Math.floor(Math.random() * 3) }); } }
+      else if (v === 'converge') { const leaves = N.map((p, i) => i).filter(i => !N[i].hub); const l = pick(leaves); go(l, n.adj[l][0], { s: 0.0014 + Math.random() * 0.001, hops: Math.random() < 0.25 ? 1 : 0 }); }
+      else if (v === 'rise') { const starts = N.map((p, i) => i).filter(i => !n.adj[i].some(j => N[j].y > N[i].y + 1)); const st = pick(starts); const up = n.adj[st].filter(j => N[j].y < N[st].y); if (up.length) go(st, pick(up), { s: 0.0016 + Math.random() * 0.001 }); }
+      else if (v === 'flow') { const st = pick(n.entries || [0]); const f = neighbors(n, st).filter(j => N[j].x > N[st].x); if (f.length) go(st, pick(f), { s: 0.0012 + Math.random() * 0.0008 }); }
+      else if (v === 'grid') { const i = Math.floor(Math.random() * N.length), nb = neighbors(n, i); if (nb.length) go(i, pick(nb), { s: 0.0014 + Math.random() * 0.0008, hops: 3 + Math.floor(Math.random() * 4) }); }
+      else if (v === 'tree') { const kids = n.adj[0].filter(j => N[j].y > N[0].y); if (kids.length) go(0, pick(kids), { s: 0.0012 + Math.random() * 0.0008 }); }
+      else if (v === 'spark') {
+        const i = Math.floor(Math.random() * N.length); N[i].glow = 1;
+        const lit = neighbors(n, i).filter(j => N[j].glow > 0.3);
+        if (lit.length && Math.random() < 0.6) go(i, pick(lit), { hops: 0, s: 0.0012 });
+      }
+    };
+    const nextHop = (n, p) => {
+      const N = n.nodes, cur = N[p.b], nb = neighbors(n, p.b).filter(j => j !== p.a);
+      if (n.v === 'rise') { const up = nb.filter(j => N[j].y < cur.y - 1); return up.length ? pick(up) : -1; }
+      if (n.v === 'flow') { const f = nb.filter(j => N[j].x > cur.x); return f.length ? pick(f) : -1; }
+      if (n.v === 'tree') { const d = nb.filter(j => N[j].y > cur.y); return d.length ? pick(d) : -1; }
+      if (n.v === 'converge') { const h = nb.filter(j => N[j].hub); return h.length ? pick(h) : -1; }
+      return nb.length ? pick(nb) : -1;
+    };
+    const arrive = (n, i) => {
+      const p = n.nodes[i];
+      if (n.v === 'converge') { if (Math.random() < 0.3) ring(n, p.x, p.y, A3); }
+      else if (n.v === 'rise' || n.v === 'flow' || n.v === 'tree') ring(n, p.x, p.y, A3, n.v !== 'tree');
+      else if (n.v === 'spark') p.glow = 1;
+    };
+    const draw = (n, dt) => {
+      const ctx = n.ctx, W = n.W, H = n.H, N = n.nodes;
+      ctx.clearRect(0, 0, W, H);
+      if (!N.length) return;
+      if (DYN[n.v]) N.forEach(p => { p.x += p.vx * dt * 0.06; p.y += p.vy * dt * 0.06; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; });
+      N.forEach(p => { p.glow = Math.max(0, p.glow - dt * 0.0005); });
+      ctx.lineWidth = 1;
+      if (DYN[n.v]) {
+        const d = D(n);
+        for (let i = 0; i < N.length; i++) for (let j = i + 1; j < N.length; j++) {
+          const a = N[i], b = N[j], dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist >= d) continue;
+          const k = 1 - dist / d;
+          if (n.v === 'spark') { const g = Math.max(a.glow, b.glow) * Math.min(a.glow, b.glow) * 2; ctx.strokeStyle = rgba(g > 0.05 ? A4 : N6, g > 0.05 ? 0.7 * k * Math.min(1, g) : 0.12 * k); }
+          else ctx.strokeStyle = rgba(N6, 0.55 * k);
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      } else {
+        const f = n.fail ? n.fail.e : -1;
+        n.edges.forEach(([i, j], e) => {
+          if (e === f) { ctx.setLineDash([4, 5]); ctx.strokeStyle = rgba(N1, 0.5); }
+          else if (n.flash && n.flash.e === e) ctx.strokeStyle = rgba(A4, 0.25 + 0.6 * n.flash.k);
+          else ctx.strokeStyle = rgba(N6, n.v === 'converge' && !(N[i].hub && N[j].hub) ? 0.22 : 0.42);
+          ctx.beginPath(); ctx.moveTo(N[i].x, N[i].y); ctx.lineTo(N[j].x, N[j].y); ctx.stroke();
+          ctx.setLineDash([]);
+        });
+      }
+      N.forEach(p => {
+        if (n.v === 'spark') {
+          const g = p.glow;
+          if (g > 0.02) { ctx.shadowBlur = 16 * g; ctx.shadowColor = A4; }
+          ctx.fillStyle = g > 0.02 ? rgba(A3, 0.35 + 0.65 * g) : rgba(N4, 0.55);
+          ctx.beginPath(); ctx.arc(p.x, p.y, 1.6 + 2.6 * g, 0, 6.283); ctx.fill(); ctx.shadowBlur = 0;
+        } else if (p.hub) { ctx.strokeStyle = rgba(A, 0.35); ctx.beginPath(); ctx.arc(p.x, p.y, 9, 0, 6.283); ctx.stroke(); ctx.fillStyle = A; ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, 6.283); ctx.fill(); }
+        else { ctx.fillStyle = rgba(N4, 0.7); ctx.beginPath(); ctx.arc(p.x, p.y, 1.7, 0, 6.283); ctx.fill(); }
+      });
+      if (this.reduce) return;
+      if (n.v === 'grid' && n.edges.length) {
+        n.failT += dt;
+        if (!n.fail && n.failT > 3200) { const e = Math.floor(Math.random() * n.edges.length), [i, j] = n.edges[e]; n.fail = { e }; n.failT = 0; ring(n, N[i].x, N[i].y, N1); ring(n, N[j].x, N[j].y, N1); }
+        else if (n.fail && n.failT > 3600) { const e = n.fail.e, [i, j] = n.edges[e]; n.fail = null; n.failT = 0; n.flash = { e, k: 1 }; ring(n, (N[i].x + N[j].x) / 2, (N[i].y + N[j].y) / 2, A3, true); }
+        if (n.flash) { n.flash.k -= dt * 0.0008; if (n.flash.k <= 0) n.flash = null; }
+      }
+      n.spawnT += dt;
+      if (n.spawnT > SPAWN[n.v]) { n.spawnT = 0; spawn(n); }
+      n.packets = n.packets.filter(p => {
+        p.t += p.s * dt;
+        const a = N[p.a], b = N[p.b];
+        if (!a || !b) return false;
+        const x = a.x + (b.x - a.x) * Math.min(1, p.t), y = a.y + (b.y - a.y) * Math.min(1, p.t);
+        if (p.threat && p.t > 0.6) { ring(n, x, y, A3); return false; }
+        if (p.t >= 1) {
+          if (p.hops > 0) { const j = nextHop(n, p); if (j >= 0) { p.a = p.b; p.b = j; p.t = 0; p.hops--; return true; } }
+          arrive(n, p.b);
+          return false;
+        }
+        const len = Math.hypot(b.x - a.x, b.y - a.y) || 1, tx = x - (b.x - a.x) / len * 22, ty = y - (b.y - a.y) / len * 22;
+        const c = p.threat ? N1 : A4;
+        const g = ctx.createLinearGradient(tx, ty, x, y);
+        g.addColorStop(0, rgba(c, 0)); g.addColorStop(1, rgba(c, 0.8));
+        ctx.strokeStyle = g; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(x, y); ctx.stroke();
+        ctx.shadowBlur = 14; ctx.shadowColor = c; ctx.fillStyle = c;
+        ctx.beginPath(); ctx.arc(x, y, 2.6, 0, 6.283); ctx.fill(); ctx.shadowBlur = 0;
+        return true;
+      });
+      ctx.lineWidth = 1.5;
+      n.rings = n.rings.filter(r => {
+        r.r += dt * r.g * 1.5; r.life -= dt * 0.0011;
+        if (r.life <= 0) return false;
+        ctx.strokeStyle = rgba(r.c, r.life * 0.9); ctx.beginPath(); ctx.arc(r.x, r.y, r.r, 0, 6.283); ctx.stroke();
+        ctx.strokeStyle = rgba(r.c, r.life * 0.5); ctx.beginPath(); ctx.arc(r.x, r.y, r.r * 0.55, 0, 6.283); ctx.stroke();
+        return true;
+      });
+    };
+    this.ro = new ResizeObserver(entries => entries.forEach(e => { const n = nets.find(x => x.c === e.target); if (n) build(n); }));
+    this.netObs = new IntersectionObserver(entries => entries.forEach(e => { const n = nets.find(x => x.c === e.target); if (n) n.visible = e.isIntersecting; }), { root });
+    nets.forEach(n => { build(n); this.ro.observe(n.c); this.netObs.observe(n.c); });
+    if (this.reduce) return;
+    let last = 0;
+    const frame = (t) => {
+      const dt = Math.min(50, t - (last || t)); last = t;
+      nets.forEach(n => { if (n.visible) draw(n, dt); });
+      this.raf = requestAnimationFrame(frame);
+    };
+    this.raf = requestAnimationFrame(frame);
+  }
+
+  renderVals() {
+    const present = this.state.mode === 'present';
+    const { tl, tc } = this.state;
+    const termLines = [];
+    TERM.forEach((L, i) => {
+      if (i > tl || (i === tl && L.cmd == null)) return;
+      const typing = i === tl;
+      termLines.push({
+        prompt: L.p || '',
+        text: L.cmd != null ? (typing ? L.cmd.slice(0, tc) : L.cmd) : L.o,
+        color: L.cmd != null ? 'var(--color-text)' : L.hl ? 'var(--color-neutral-100)' : L.ok ? 'var(--color-accent-300)' : 'var(--color-neutral-400)',
+        bg: L.hl ? 'var(--color-accent-800)' : 'transparent',
+        cursor: typing ? '▍' : '',
+      });
+    });
+    if (tl >= TERM.length) termLines.push({ prompt: 'PC1>', text: '', color: 'var(--color-text)', bg: 'transparent', cursor: '▍' });
+    const a = this.state.active;
+    return {
+      scrollerRef: this.scroller,
+      canvasRef: this.canvas,
+      snapType: present ? 'y mandatory' : 'none',
+      isPresent: present,
+      isWeb: !present,
+      togglePresent: () => this.togglePresent(),
+      exitPresent: () => this.togglePresent(false),
+      next: () => this.goTo(a + 1),
+      prev: () => this.goTo(a - 1),
+      counter: String(a + 1).padStart(2, '0'),
+      total: String(CH.length).padStart(2, '0'),
+      activeLabel: CH[a],
+      dots: CH.map((label, i) => ({ label, go: () => this.goTo(i), w: i === a ? '28px' : '8px', bg: i === a ? 'var(--color-accent)' : 'var(--color-neutral-700)' })),
+      termLines,
+      showSources: this.props.showSources ?? true,
+      audioRef: this.audio,
+      volume: this.state.volume,
+      soundTitle: this.state.sound ? 'Mute music (M)' : 'Play music (M)',
+      soundWave: this.state.sound ? 'M16.5 8.5a5 5 0 0 1 0 7M19.5 5.5a9 9 0 0 1 0 13' : 'M16 9l5 6M21 9l-5 6',
+      toggleSound: () => { this.soundTouched = true; this.setSound(!this.state.sound); },
+      setVolume: (e) => { const v = +e.target.value; this.setState({ volume: v }); const a = this.audio.current; if (a && this.state.sound) { cancelAnimationFrame(this.fadeRaf); a.volume = v; } },
+      techFont: ({ 'Chakra Petch': "'Chakra Petch'", 'Oxanium': "'Oxanium'", 'Space Grotesk': "'Space Grotesk'", 'JetBrains Mono': "'JetBrains Mono'", 'Exo 2': "'Exo 2'", 'Orbitron': "'Orbitron'", 'Rajdhani': "'Rajdhani'" })[this.props.headingFont] || "'Chakra Petch'",
+    };
+  }
+}
+</script>
+</body>
+</html>
